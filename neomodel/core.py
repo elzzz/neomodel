@@ -175,8 +175,9 @@ class NodeMeta(type):
             label_set = frozenset(cls.inherited_labels())
             if label_set not in db._NODE_CLASS_REGISTRY:
                 db._NODE_CLASS_REGISTRY[label_set] = cls
-            else:
-                raise ClassAlreadyDefined(cls, db._NODE_CLASS_REGISTRY)
+            # Commented because app requires dynamic reload libraries in memory without main app reload
+            # else:
+            #     raise ClassAlreadyDefined(cls, db._NODE_CLASS_REGISTRY)
 
         return cls
 
